@@ -38,7 +38,7 @@ def dicadd(dic,key,increment=1):
 
 def save(path_dict,dic_file):
     f=open(dic_file+".tmp",'w')
-    pickle.dump(path_dict,f,protocol=2)
+    pickle.dump(path_dict,f,protocol=2, fix_imports=True)
     f.flush()
     os.fsync(f)
     f.close()
@@ -104,7 +104,7 @@ def find_matches(dirs,patterns,result_list,ignore_case,max_matches):
 
 def open_dic(dic_file,error_recovery=False):
     try:
-        aj_file=open(dic_file)
+        aj_file=open(dic_file, 'rb')
         path_dict=pickle.load(aj_file)
         aj_file.close()
         return path_dict
