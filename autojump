@@ -45,7 +45,7 @@ def dicadd(dic,key,increment=1):
 
 def save(path_dict,dic_file):
     f=NamedTemporaryFile(dir=config_dir,delete=False)
-    pickle.dump(path_dict,f,-1)
+    pickle.dump(path_dict,f,2)
     f.flush()
     os.fsync(f)
     f.close()
@@ -142,7 +142,7 @@ elif ('--stat','') in optlist:
 elif ('--import','') in optlist:
     for i in open(args[-1]).readlines():
         dicadd(path_dict,i[:-1])
-    pickle.dump(path_dict,open(dic_file,'w'),-1)
+    pickle.dump(path_dict,open(dic_file,'w'),2)
 else:
     import re
     completion=False
